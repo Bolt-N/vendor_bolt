@@ -3,4 +3,4 @@
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/simpleaosp/sepolicy
+    vendor/bolt/sepolicy

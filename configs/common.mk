@@ -1,8 +1,11 @@
 # Brand
-PRODUCT_BRAND ?= simpleaosp
+PRODUCT_BRAND ?= Bolt-Os
 
 # Local path for prebuilts
-LOCAL_PATH:= vendor/simpleaosp/prebuilts/common/system
+LOCAL_PATH:= vendor/bolt/prebuilts/common/system
+
+# Inherit common product build prop overrides
+-include vendor/bolt/config/version.mk
 
 # Jack server heap size
 export ANDROID_JACK_VM_ARGS += "-Xmx4g"
@@ -31,7 +34,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
 
 # Common overlays
-PRODUCT_PACKAGE_OVERLAYS += vendor/simpleaosp/overlays/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/bolt/overlays/common
 
 # Needed Packages
 PRODUCT_PACKAGES += \
@@ -44,7 +47,7 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so
 else
 PRODUCT_COPY_FILES += \
-    vendor/simpleaosp/prebuilts/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
+    vendor/bolt/prebuilts/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
 endif
 
 
@@ -61,7 +64,7 @@ endif
 
 # Backuptool support
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/addon.d/50-simpleaosp.sh:system/addon.d/50-simpleaosp.sh \
+    $(LOCAL_PATH)/addon.d/50-bolt.sh:system/addon.d/50-bolt.sh \
     $(LOCAL_PATH)/bin/backuptool.functions:system/bin/backuptool.functions \
     $(LOCAL_PATH)/bin/backuptool.sh:system/bin/backuptool.sh
 

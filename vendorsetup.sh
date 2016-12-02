@@ -1,4 +1,4 @@
-add_lunch_combo saosp_angler-user
-add_lunch_combo saosp_bullhead-user
-add_lunch_combo saosp_mako-userdebug
-add_lunch_combo saosp_shamu-user
+add_lunch_combo bolt_angler-user
+add_lunch_combo bolt_bullhead-user
+add_lunch_combo bolt_mako-userdebug
+add_lunch_combo bolt_shamu-user
