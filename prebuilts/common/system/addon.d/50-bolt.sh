@@ -1,7 +1,7 @@
 #!/sbin/sh
 # 
-# /system/addon.d/50-simpleaosp.sh
-# During a SimpleAOSP upgrade, this script backs up /system/etc/hosts,
+# /system/addon.d/50-bolt.sh
+# During a BOLT-Os upgrade, this script backs up /system/etc/hosts,
 # This script will also backup and restore your gapps and other things you add.
 # /system is formatted and reinstalled, then the file is restored.
 #

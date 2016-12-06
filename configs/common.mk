@@ -4,9 +4,6 @@ PRODUCT_BRAND ?= Bolt-Os
 # Local path for prebuilts
 LOCAL_PATH:= vendor/bolt/prebuilts/common/system
 
-# Inherit common product build prop overrides
--include vendor/bolt/config/version.mk
-
 # Jack server heap size
 export ANDROID_JACK_VM_ARGS += "-Xmx4g"
 
@@ -39,7 +36,14 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/bolt/overlays/common
 # Needed Packages
 PRODUCT_PACKAGES += \
     Busybox \
+    Superuser \
+    Eleven \
     Launcher3
+
+# Superuser
+PRODUCT_COPY_FILES += \
+    vendor/bolt/prebuilts/common/superuser/su:root/sbin/su \
+    vendor/bolt/prebuilts/common/superuser/init.superuser.rc:root/init.superuser.rc
 
 # Proprietary latinime libs needed for Keyboard swyping
 ifneq ($(filter saosp_shamu saosp_mako,$(TARGET_PRODUCT)),)
@@ -72,5 +76,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/bootanimation.zip:system/media/bootanimation.zip
 
+# init file
+PRODUCT_COPY_FILES += \
+    vendor/bolt/prebuilts/common/bin/sysinit:system/bin/sysinit \
+    vendor/bolt/prebuilts/common/etc/init.bolt.rc:root/init.bolt.rc \
+    vendor/bolt/prebuilts/common/init.d/00banner:system/etc/init.d/00banner \
+    vendor/bolt/prebuilts/common/init.d/init.d.rc:root/init.d.rc
+
+# Addons APKs
+-include vendor/addons/config.mk
+
 ## Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
+
+# Inherit common product build prop overrides
+-include vendor/bolt/configs/version.mk
